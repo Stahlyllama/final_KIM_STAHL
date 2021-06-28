@@ -31,8 +31,8 @@ public class AppController {
 
     @PostMapping("/process_register")
     public String processRegister(User user) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
         userRepo.save(user);

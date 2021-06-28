@@ -21,6 +21,9 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
+    @Column(name= "artisticMedium", nullable = false)
+    private String artisticMedium;
+
     public Integer getId() {
         return id;
     }

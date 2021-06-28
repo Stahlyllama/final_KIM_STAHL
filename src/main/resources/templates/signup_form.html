@@ -50,6 +50,27 @@
                 <br/>
             </div>
 
+            <div class="form-group">
+                <h4>Artistic Medium</h4>
+                <h5>Choose only one:</h5>
+                <input type="radio" id="metals" name="metals" value="metals">
+                <label for ="metals">Metals</label><br/>
+                <input type="radio" id="2D paint" name="2D paints" value="2D paints">
+                <label for ="metals">2D Paint</label><br/>
+                <input type="radio" id="2D drawing" name="2D drawing" value="2D drawing">
+                <label for ="2D drawing">2D Drawing</label><br/>
+                <input type="radio" id="photography" name="photography" value="photography">
+                <label for ="photography">Photography</label><br/>
+                <input type="radio" id="sculpture" name="sculpture" value="sculpture">
+                <label for ="sculpture">Sculpture</label><br/>
+                <input type="radio" id="printmaking" name="printmaking" value="printmaking">
+                <label for ="printmaking">Print Making</label><br/>
+                <input type="radio" id="wood" name="wood" value="wood">
+                <label for ="wood">Wood</label><br/>
+
+                <span class="has-error" th:if="${#fields.hasErrors('artisticMedium')}" th:errors="*{artisticMedium}"></span>
+            </div>
+            <br/>
             <div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </div>
