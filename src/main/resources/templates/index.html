@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Artist Assistant Application</title>
@@ -8,10 +8,11 @@
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container text-center">
-  <h1>Welcome to Artist Assistant Application</h1>
-  <h3><a th:href="@{/register}">Register</a></h3>
-  <h3><a th:href="@{/login}">Login</a></h3>
+<div align="center">
+  <h1>Welcome Artists!</h1>
+    <h2>This is your ticket to the new time saving Artist Assistant Application</h2>
+  <h3><a href="@{/register}">Click here to register</a></h3>
+  <h3><a href="@{/login}">Already joined? Login here</a></h3>
 </div>
 
 </body>

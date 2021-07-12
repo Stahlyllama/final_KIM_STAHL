@@ -1,35 +1,48 @@
 package org.launchcode.final_KIM_STAHL.model;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
+import java.util.*;
+
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
 
     @Column(nullable = false, unique = true, length = 45)
     private String email;
 
-    @Column(nullable = false, length = 64)
-    private String password;
+    @Column(nullable = false, length = 255)
+    private static String pwHash;
 
-    @Column(name = "first_name", nullable = false, length = 20)
-    private String firstName;
+    @Column(nullable = false, length = 100)
+    private String medium;
 
-    @Column(name = "last_name", nullable = false, length = 20)
-    private String lastName;
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    @Column(name= "artisticMedium", nullable = false)
-    private String artisticMedium;
-
-    public Integer getId() {
-        return id;
+    public User() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public User(String name, String email, String password, String medium) {
+        this.name = name;
+        this.email = email;
+        this.pwHash = encoder.encode(password);
+        this.medium = medium;
+    }
+
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -40,27 +53,28 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public static String getPwHash() {
+        return pwHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public static void setPwHash(String pwHash) {
+        User.pwHash = pwHash;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getMedium() {
+        return medium;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setMedium(String medium) {
+        this.medium = medium;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", medium='" + medium + '\'' +
+                '}';
     }
 }

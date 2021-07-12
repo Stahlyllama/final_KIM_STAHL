@@ -1,7 +1,8 @@
 package org.launchcode.final_KIM_STAHL;
 
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 import org.launchcode.final_KIM_STAHL.model.User;
 import org.launchcode.final_KIM_STAHL.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class UserRepositoryTests {
         user.setPassword("kimstahl");
         user.setFirstName("Kim");
         user.setLastName("Stahl");
+//        user.setArtisticMedium("Metals");
 
         User savedUser = repo.save(user);
 

@@ -17,32 +17,46 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private DataSource dataSource;
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new CustomUserDetailsService();
-    }
+    @Autowired
+    UserDetailsService userDetailsService;
 
-    @Bean
+
+    @Autowired
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder());
-
-        return authProvider;
-    }
+//    @Bean
+//    public DaoAuthenticationProvider authenticationProvider() {
+//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+//        authProvider.setUserDetailsService(userDetailsService());
+//        authProvider.setPasswordEncoder(passwordEncoder());
+//
+//        return authProvider;
+//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+                auth.userDetailsService(userDetailsService);
     }
+// If I wanted to create in-memory users:
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(new BCryptPasswordEncoder())
+//                .withUser("Stan")
+//                .password("...")
+//                .roles("USER")
+//                .and()
+//                .withUser("Kim")
+//                .password("...")
+//                .roles("ADMIN")
+//        ;
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

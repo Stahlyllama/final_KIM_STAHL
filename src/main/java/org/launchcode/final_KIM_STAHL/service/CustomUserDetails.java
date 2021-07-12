@@ -21,7 +21,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword(){
-        return user.getPassword();
+        return getPassword();
     }
 
     @Override
@@ -50,7 +50,7 @@ public class CustomUserDetails implements UserDetails {
     }
 
     public String getFullName() {
-        return user.getFirstName() + " " + user.getLastName();
+        return user.getName();
     }
 
 }
