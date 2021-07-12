@@ -29,21 +29,32 @@
 
 <!--        <form action="submit form" th:action="@{/process_register}" th:object="${user}"-->
 <!--          method="post" style="max-width: 600px; margin: 0 auto;">-->
-
+          <div>
           <label>Full Name: </label>
                 <input type="text" th:field="*{Name}"/><br/>
+          </div>
 
+          <div>
           <label>E-mail: </label>
                <input type="text" th:field="*{email}"/><br/>
+          </div>
 
+          <div>
           <label>Password: </label>
                 <input type="password" th:field="*{password}"/><br/>
+          </div>
 
+          <div>
+            <label>Confirm Password: </label>
+                <input type="password" th:field="*{matchingPassowrd"}/>
+          </div>
+
+         <div>
           <label>Medium:</label>
           <select th:field="*{medium}">
               <option th:each="m : ${listMedium}" th:value="${m}" th:text="${m}" />
           </select>
-        <br/>
+         </div>
 
 <!--            <div class="form-group">
             <h4>Artistic Medium</h4>
