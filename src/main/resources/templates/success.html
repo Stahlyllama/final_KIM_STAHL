@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Registration Success</title>
+<style type="text/css">
+  span{
+  display: inline-block;
+  width: 200px;
+  text-align: left;
+  }
+  </style>
+</head>
+<body>
+<div align="center">
+  <h3>You have signed up successfully!</h3>
+  <span>Full Name:</span><span th:text="${user.name}"</span><br/>
+  <span>Email:</span><span th:text="${user.email}"</span><br/>
+  <span>Medium:</span><span th:text="${user.medium}"</span><br/>
+  <h4><a th:href="/@{/login}">Click here to Login</a></h4>
+</div>
+
+</body>
+</html>
